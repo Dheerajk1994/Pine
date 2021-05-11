@@ -1,2 +1,3 @@
+include ':pine'
 include ':app'
 rootProject.name = "Pine"
