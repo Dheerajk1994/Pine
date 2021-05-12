@@ -12,5 +12,9 @@ class MainActivity : AppCompatActivity() {
         Pine.setLogLevel(Pine.LogLevel.INFO)
 
         Pine.i("hello")
+        Pine.w("test warning")
+        Pine.d("test debug")
+        Pine.v("test verbose")
+        Pine.e("test error")
     }
 }
