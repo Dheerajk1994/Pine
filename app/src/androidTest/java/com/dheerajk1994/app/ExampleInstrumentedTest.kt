@@ -1,4 +1,4 @@
-package com.dheerajk1994.pine
+package com.dheerajk1994.app
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
