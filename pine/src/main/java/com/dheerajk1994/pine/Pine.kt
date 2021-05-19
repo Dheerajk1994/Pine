@@ -8,15 +8,23 @@ class Pine {
         ERROR,
         WARN,
         DEBUG,
+        STEP,
         INFO,
         VERBOSE,
     }
     companion object {
         private const val TAG = "PINE"
         private var currentLogLevel: LogLevel = LogLevel.ERROR
+        private var currentStepLevel = 1
 
         fun setLogLevel(level : LogLevel) {
             this.currentLogLevel = level
+        }
+
+        fun logStep(message: String) {
+            if(currentLogLevel <= LogLevel.STEP) {
+                Log.d(TAG, "Step $currentStepLevel : $message")
+            }
         }
 
         fun v(message : String) {
