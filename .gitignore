@@ -13,6 +13,4 @@
 .externalNativeBuild
 .cxx
 local.properties
-
-# gpg files
 *.gpg
