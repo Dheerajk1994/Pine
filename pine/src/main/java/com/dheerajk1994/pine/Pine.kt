@@ -1,6 +1,7 @@
 package com.dheerajk1994.pine
 
 import android.util.Log
+import android.view.View
 
 class Pine private constructor() {
     enum class LogLevel {
@@ -21,9 +22,10 @@ class Pine private constructor() {
             this.currentLogLevel = level
         }
 
-        fun logStep(message: String) {
-            if(currentLogLevel <= LogLevel.STEP) {
-                Log.d(TAG, "Step $currentStepLevel : $message")
+        fun logStep(message: String, viewElement : View?) {
+            if(currentLogLevel >= LogLevel.STEP) {
+                val properName = viewElement?.context?.resources?.getResourceEntryName(viewElement.id) ?: ""
+                Log.d(TAG, "Step ${currentStepLevel++} : $message $properName")
             }
         }
 
