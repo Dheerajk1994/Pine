@@ -2,7 +2,7 @@ package com.dheerajk1994.pine
 
 import android.util.Log
 
-class Pine {
+class Pine private constructor() {
     enum class LogLevel {
         NO_LOG,
         ERROR,
