@@ -13,7 +13,7 @@ class Pine private constructor() {
         VERBOSE,
     }
     companion object {
-        private const val TAG = "PINE"
+        private const val TAG = "Pine : "
         private var currentLogLevel: LogLevel = LogLevel.ERROR
         private var currentStepLevel = 1
 
@@ -67,6 +67,7 @@ class Pine private constructor() {
                     LogLevel.VERBOSE -> {
                         Log.v(TAG, message + stackTrace)
                     }
+                    else -> { }
                 }
             }
         }
