@@ -2,7 +2,7 @@ package com.dheerajk1994.pine
 
 import android.util.Log
 
-class Pine {
+class Pine private constructor() {
     enum class LogLevel {
         NO_LOG,
         ERROR,
@@ -13,7 +13,7 @@ class Pine {
         VERBOSE,
     }
     companion object {
-        private const val TAG = "PINE"
+        private const val TAG = "Pine : "
         private var currentLogLevel: LogLevel = LogLevel.ERROR
         private var currentStepLevel = 1
 
@@ -67,6 +67,7 @@ class Pine {
                     LogLevel.VERBOSE -> {
                         Log.v(TAG, message + stackTrace)
                     }
+                    else -> { }
                 }
             }
         }
