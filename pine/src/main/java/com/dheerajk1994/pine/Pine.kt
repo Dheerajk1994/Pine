@@ -62,6 +62,7 @@ class Pine private constructor() {
             printLog(LogLevel.ERROR, message)
         }
 
+        @Synchronized
         private fun printLog(requestedLevel : LogLevel, message : String) {
             val stackTrace = Thread.currentThread().stackTrace
             val caller = "${stackTrace[4].className}/${stackTrace[4].methodName}"
