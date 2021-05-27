@@ -6,6 +6,7 @@ import android.view.View
 class Pine private constructor() {
     enum class LogLevel {
         NO_LOG,
+        WTF,
         ERROR,
         WARN,
         DEBUG,
@@ -62,6 +63,10 @@ class Pine private constructor() {
             printLog(LogLevel.ERROR, message)
         }
 
+        fun wtf(message : String) {
+            printLog(LogLevel.WTF, message)
+        }
+
         @Synchronized
         private fun printLog(requestedLevel : LogLevel, message : String) {
             val stackTrace = Thread.currentThread().stackTrace
@@ -70,6 +75,9 @@ class Pine private constructor() {
             if(requestedLevel <= currentLogLevel) {
                 when(requestedLevel) {
                     LogLevel.NO_LOG -> {}
+                    LogLevel.WTF -> {
+                        Log.wtf(TAG, fullMessage)
+                    }
                     LogLevel.ERROR -> {
                         Log.e(TAG, fullMessage)
                     }
