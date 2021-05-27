@@ -18,10 +18,23 @@ class Pine private constructor() {
         private var currentLogLevel: LogLevel = LogLevel.ERROR
         private var currentStepLevel = 1
 
+        /**
+         * Allows you to send the min log level for the build.
+         * Log levels of lesser value will be ignored.
+         * @param level The minimum log level to listen in on.
+         */
         fun setLogLevel(level : LogLevel) {
             this.currentLogLevel = level
         }
 
+        /**
+         * Function to keep track of the action taken in the app.
+         * Will keep track of the number of the step and can also take in Views.
+         * @param message Message to be printed
+         * @param viewElement Optional view element -
+         *sample use :
+         * Pine.logStep("user pressed ", btn_send)
+         */
         fun logStep(message: String, viewElement : View?) {
             if(currentLogLevel >= LogLevel.STEP) {
                 val properName = viewElement?.context?.resources?.getResourceEntryName(viewElement.id) ?: ""
