@@ -14,7 +14,7 @@ class Pine private constructor() {
         VERBOSE,
     }
     companion object {
-        private const val TAG = "Pine : "
+        private const val TAG = "Pine "
         private var currentLogLevel: LogLevel = LogLevel.ERROR
         private var currentStepLevel = 1
 
@@ -50,24 +50,26 @@ class Pine private constructor() {
         }
 
         private fun printLog(requestedLevel : LogLevel, message : String) {
-            val stackTrace = Thread.currentThread().stackTrace[6]
+            val stackTrace = Thread.currentThread().stackTrace
+            val caller = "${stackTrace[4].className}/${stackTrace[4].methodName}"
+            val fullMessage = "$caller : $message"
             if(requestedLevel <= currentLogLevel) {
                 when(requestedLevel) {
                     LogLevel.NO_LOG -> {}
                     LogLevel.ERROR -> {
-                        Log.e(TAG, message + stackTrace)
+                        Log.e(TAG, fullMessage)
                     }
                     LogLevel.WARN -> {
-                        Log.w(TAG, message + stackTrace)
+                        Log.w(TAG, fullMessage)
                     }
                     LogLevel.DEBUG -> {
-                        Log.d(TAG, message + stackTrace)
+                        Log.d(TAG, fullMessage)
                     }
                     LogLevel.INFO -> {
-                        Log.i(TAG, message + stackTrace)
+                        Log.i(TAG, fullMessage)
                     }
                     LogLevel.VERBOSE -> {
-                        Log.v(TAG, message + stackTrace)
+                        Log.v(TAG, fullMessage)
                     }
                     else -> { }
                 }

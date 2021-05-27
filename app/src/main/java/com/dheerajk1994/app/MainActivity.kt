@@ -21,5 +21,11 @@ class MainActivity : AppCompatActivity() {
         btn_test_button.setOnClickListener {
             Pine.logStep("pressed ", btn_test_button)
         }
+
+        testFunction()
+    }
+
+    private fun testFunction() {
+        Pine.d("test")
     }
 }
