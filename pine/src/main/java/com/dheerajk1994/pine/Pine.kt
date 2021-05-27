@@ -4,6 +4,11 @@ import android.util.Log
 import android.view.View
 
 class Pine private constructor() {
+    /**
+     * Enum class representing log levels.
+     * Higher values represent lower priority.
+     * IE: log level set to ERROR will not print WARN, DEBUG, STEP, etc...
+     */
     enum class LogLevel {
         NO_LOG,
         WTF,
@@ -43,30 +48,59 @@ class Pine private constructor() {
             }
         }
 
+        /**
+         * Function to print into VERBOSE log level.
+         * @param message Message to print.
+         */
         fun v(message : String) {
             printLog(LogLevel.VERBOSE, message)
         }
 
+        /**
+         * Function to print into INFo log level.
+         * @param message Message to print.
+         */
         fun i(message : String) {
             printLog(LogLevel.INFO, message)
         }
 
+        /**
+         * Function to print into DEBUG log level.
+         * @param message Message to print.
+         */
         fun d(message : String) {
             printLog(LogLevel.DEBUG, message)
         }
 
+        /**
+         * Function to print into WARN log level.
+         * @param message Message to print.
+         */
         fun w(message : String) {
             printLog(LogLevel.WARN, message)
         }
 
+        /**
+         * Function to print into ERROR log level.
+         * @param message Message to print.
+         */
         fun e(message : String) {
             printLog(LogLevel.ERROR, message)
         }
 
+        /**
+         * Function to print into WTF log level.
+         * @param message Message to print.
+         */
         fun wtf(message : String) {
             printLog(LogLevel.WTF, message)
         }
 
+        /**
+         * Prints logs - synchronized
+         * @param requestedLevel : Requested log level of incoming message
+         * @param message : Message to be printed
+         */
         @Synchronized
         private fun printLog(requestedLevel : LogLevel, message : String) {
             val stackTrace = Thread.currentThread().stackTrace
